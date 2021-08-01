@@ -24,6 +24,14 @@ public class PokedexService {
         return pokemonRepository.findAll();
     }
 
+    public Pokemon findPokemonById(Long id) {
+        Optional<Pokemon> pokemon = pokemonRepository.findById(id);
+        if (pokemon.isPresent())
+            return pokemon.get();
+        else
+            return null;
+    }
+
     public Pokemon updatePokemon(Long id, Pokemon pokemon) {
         Optional<Pokemon> pokemonSaved = pokemonRepository.findById(id);
         if (pokemonSaved.isPresent()) {
