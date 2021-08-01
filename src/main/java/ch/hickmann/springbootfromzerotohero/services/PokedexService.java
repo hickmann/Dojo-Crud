@@ -37,4 +37,8 @@ public class PokedexService {
         return null;
     }
 
+    public void deletePokemon(Long id) {
+        pokemonRepository.deleteById(id);
+    }
+
 }

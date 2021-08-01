@@ -48,4 +48,16 @@ public class PokedexControllerRest {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Pokemon> deletePokemon(
+            @PathVariable("id") long id) {
+
+        try {
+            pokedexService.deletePokemon(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
