@@ -26,4 +26,14 @@ public class PokedexControllerRest {
         return new ResponseEntity<>(pokemonCreated, HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Pokemon>> findAllPokemons() {
+        List<Pokemon> pokemonList = pokedexService.findAllPokemons();
+
+        if (pokemonList.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        return new ResponseEntity<>(pokemonList, HttpStatus.OK);
+    }
+
 }

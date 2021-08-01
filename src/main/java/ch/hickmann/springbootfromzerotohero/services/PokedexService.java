@@ -20,4 +20,8 @@ public class PokedexService {
         return pokemonRepository.save(pokemon);
     }
 
+    public List<Pokemon> findAllPokemons() {
+        return pokemonRepository.findAll();
+    }
+
 }
