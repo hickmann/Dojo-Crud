@@ -24,4 +24,17 @@ public class PokedexService {
         return pokemonRepository.findAll();
     }
 
+    public Pokemon updatePokemon(Long id, Pokemon pokemon) {
+        Optional<Pokemon> pokemonSaved = pokemonRepository.findById(id);
+        if (pokemonSaved.isPresent()) {
+            Pokemon pokemonAux = pokemonSaved.get();
+            pokemonAux.setName(pokemon.getName());
+            pokemonAux.setNationalNumber(pokemon.getNationalNumber());
+            pokemonAux.setType(pokemon.getType());
+
+            return pokemonRepository.save(pokemonAux);
+        }
+        return null;
+    }
+
 }

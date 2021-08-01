@@ -36,4 +36,16 @@ public class PokedexControllerRest {
         return new ResponseEntity<>(pokemonList, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Pokemon> updatePokemon(
+            @PathVariable("id") long id,
+            @RequestBody Pokemon pokemon) {
+        Pokemon pokemonUpdated = pokedexService.updatePokemon(id, pokemon);
+
+        if (pokemonUpdated != null)
+            return new ResponseEntity<>(pokemonUpdated, HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 }
